@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Jackoski Homepage</title>
+    <style>
+        html, body {
+            background-color: black;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 80px; /* Add padding to prevent content from being hidden behind sticky header */
+            background-color: black;
+            color: white;
+        }
+        .content, .projects, .project-item, .footer, .menu-bar {
+            background-color: black;
+            color: white;
+        }
+        .project-info h3, .project-info p {
+            color: white;
+        }
+        body.light-mode, html.light-mode {
+            background-color: #fff;
+        }
+        body.light-mode, body.light-mode .content, body.light-mode .projects, body.light-mode .project-item, body.light-mode .footer, body.light-mode .menu-bar {
+            background-color: #fff;
+            color: #000;
+        }
+        body.light-mode .menu-bar .left,
+        body.light-mode .menu-bar .right a,
+        body.light-mode .footer a,
+        body.light-mode .project-info h3,
+        body.light-mode .project-info p {
+            color: #000;
+        }
+        .menu-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .menu-bar .left {
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .menu-bar .left:hover {
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        .menu-bar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-bar .right a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.5em;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .menu-bar .right a:hover {
+            text-decoration: underline;
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        .menu-bar .right img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .menu-bar .right img:hover {
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+        }
+
+        .content img {
+            max-width: 300px;
+            height: auto;
+            margin-right: 40px;
+            border-radius: 10px;
+        }
+
+        .content .info {
+            max-width: 700px;
+        }
+
+        .content .info h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .content .info h2 {
+            font-size: 2em;
+            margin: 10px 0 20px;
+        }
+
+        .content .info p {
+            font-size: 1.5em;
+            line-height: 1.8;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: black;
+            color: white;
+            padding: 20px 30px;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+        .footer .left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .footer .label {
+            margin-bottom: 4px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 0;
+            margin-right: 0;
+        }
+        .footer .left a {
+            font-size: 1.3em;
+            word-break: break-all;
+        }
+        .footer .right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0;
+        }
+
+        .footer .icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 4px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .footer a img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .footer a:hover, .footer a img:hover {
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+
+        .footer .label {
+            margin-bottom: 22px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: -4px;
+        }
+
+        .projects {
+            padding: 40px 30px;
+            background-color: #181818;
+            color: #fff;
+        }
+
+        .project-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .project-item img {
+            max-width: 200px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .project-info h3,
+        .project-info p {
+            color: #fff;
+        }
+
+        .project-info h3 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .project-info p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .toggle-mode-btn {
+            display: none;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+            margin-left: 20px;
+            vertical-align: middle;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #222;
+            border-radius: 32px;
+            transition: background 0.3s;
+        }
+        .slider:before {
+            position: absolute;
+            content: '🌙';
+            height: 28px;
+            width: 28px;
+            left: 2px;
+            bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .toggle-switch input:checked + .slider {
+            background-color: #ffd700;
+        }
+        .toggle-switch input:checked + .slider:before {
+            transform: translateX(28px);
+            content: '☀️';
+            background: #fffbe6;
+            color: #f7b500;
+        }
+        body.light-mode .slider {
+            background-color: #ffd700;
+        }
+        body.light-mode .slider:before {
+            background: #fffbe6;
+            color: #f7b500;
+        }
+        @media (max-width: 600px) {
+            .toggle-switch {
+                width: 40px;
+                height: 22px;
+            }
+            .slider:before {
+                width: 18px;
+                height: 18px;
+                font-size: 1em;
+            }
+            .toggle-switch input:checked + .slider:before {
+                transform: translateX(18px);
+            }
+        }
+
+        /* PROJECT SECTION FINAL SWAP STYLES */
+        /* DARK MODE: dark card style */
+        body:not(.light-mode) .projects {
+            background-color: #000;
+            color: #e5e7eb;
+        }
+        body:not(.light-mode) .project-item {
+            background: none;
+            box-shadow: none;
+            border: none;
+        }
+        body:not(.light-mode) .project-card {
+            background: #1a1f23;
+            border: 1px solid #23272e;
+            border-radius: 12px;
+            padding: 32px 28px;
+            min-width: 350px;
+            max-width: 400px;
+            color: #e5e7eb;
+            font-size: 1em;
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+        }
+        body:not(.light-mode) .project-card a {
+            color: #3b82f6;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        body:not(.light-mode) .project-card .public-badge {
+            float: right;
+            background: #23272e;
+            color: #bfc7d5;
+            border-radius: 12px;
+            padding: 2px 14px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        body:not(.light-mode) .project-info,
+        body:not(.light-mode) .project-info h3,
+        body:not(.light-mode) .project-info p {
+            color: #e5e7eb;
+        }
+        /* LIGHT MODE: light card style */
+        body.light-mode .projects {
+            background-color: #fff;
+            color: #000;
+        }
+        body.light-mode .project-item {
+            background: none;
+            box-shadow: none;
+            border: none;
+        }
+        body.light-mode .project-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px 28px;
+            min-width: 350px;
+            max-width: 400px;
+            color: #000;
+            font-size: 1em;
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+        }
+        body.light-mode .project-card a {
+            color: #1d4ed8;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        body.light-mode .project-card .public-badge {
+            float: right;
+            background: #e5e7eb;
+            color: #222;
+            border-radius: 12px;
+            padding: 2px 14px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        body.light-mode .project-info,
+        body.light-mode .project-info h3,
+        body.light-mode .project-info p {
+            color: #000;
+        }
+        /* Side Projects Title Styling */
+        .projects .side-projects-title {
+            text-align: center;
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            margin-top: 0;
+            letter-spacing: 1px;
+            text-decoration: underline;
+        }
+        body.light-mode .projects .side-projects-title {
+            color: #000;
+        }
+        body:not(.light-mode) .projects .side-projects-title {
+            color: #e5e7eb;
+        }
+        .projects h2 {
+            margin-bottom: 0;
+        }
+        .projects .project-item {
+            max-width: 100%;
+            margin: 0 0 48px 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 56px;              /* space between text and card */
+            background: none;
+            box-shadow: none;
+            border: none;
+            padding: 0 30px;
+        }
+        .projects .project-card {
+            width: 400px;
+            min-width: 320px;
+            max-width: 450px;
+            margin-left: 0;
+            margin-right: 0;
+            flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+            .projects .project-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 24px;
+            }
+            .projects .project-card {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        body.light-mode #linkedin-logo,
+        body.light-mode #linkedin-logo-footer {
+            width: 48px !important;
+            height: 48px !important;
+        }
+        body.light-mode #linkedin-logo-footer {
+            vertical-align: middle;
+            margin-top: -6px; /* Adjust this value as needed for perfect alignment */
+        }
+        body.light-mode #linkedin-logo-footer {
+            z-index: 1;
+            position: relative;
+        }
+        body.light-mode .footer .label {
+            z-index: 2;
+            position: relative;
+        }
+        body.light-mode #mail-logo,
+        body.light-mode #mail-logo-footer {
+            width: 48px !important;
+            height: 48px !important;
+        }
+        body:not(.light-mode) #mail-logo,
+        body:not(.light-mode) #mail-logo-footer {
+            width: 36px !important;
+            height: 36px !important;
+        }
+        body.light-mode #mail-logo-footer {
+            margin-top: -6px;
+        }
+        .profile-pic-and-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 40px;
+        }
+
+        .profile-pic-and-btn img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+        }
+
+        .download-resume-btn {
+            margin: 24px 0 0 0;
+            padding: 14px 0;
+            font-size: 1.2em;
+            font-weight: 900;
+            width: 100%;
+            max-width: 300px;
+            min-width: 200px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 24px 0 rgba(30,41,59,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 1px;
+            display: block;
+            margin-left: -8px;
+        }
+        .download-resume-btn:hover {
+            background: #f0f0f0;
+            color: #000;
+            transform: scale(1.04);
+        }
+        body.light-mode .download-resume-btn {
+            background: #000;
+            color: #fff;
+        }
+        body.light-mode .download-resume-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        .download-resume-btn {
+            margin-left: -30px; /* adjust this value as needed */
+        }
+        .project-card-link {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 12px;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .project-card-link:hover,
+        .project-card-link:focus {
+            transform: scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(30,41,59,0.18);
+            z-index: 2;
+            text-decoration: none;
+        }
+        .projects h2 {
+            text-align: left;
+            margin-left: -30px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 600px) {
+            .menu-bar {
+                padding: 8px 8px;
+            }
+            .menu-bar .left {
+                font-size: 1.2em;
+            }
+            .menu-bar .right a {
+                font-size: 1em;
+                margin-left: 10px;
+            }
+            .menu-bar .right img {
+                width: 28px;
+                height: 28px;
+                margin-left: 6px;
+            }
+            .content {
+                flex-direction: column;
+                padding: 16px 4px;
+            }
+            .content img {
+                max-width: 140px;
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+            .content .info h1 {
+                font-size: 1.5em;
+            }
+            .content .info h2 {
+                font-size: 1.1em;
+            }
+            .content .info p {
+                font-size: 1em;
+            }
+            .download-resume-btn {
+                font-size: 1em;
+                max-width: 140px;
+                min-width: 100px;
+                padding: 8px 0;
+                margin-left: 0;
+            }
+            .projects {
+                padding: 16px 2px;
+            }
+            .side-projects-title {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+            .project-item {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 2px;
+            }
+            .project-card {
+                min-width: 0;
+                max-width: 100%;
+                width: 100%;
+                padding: 10px 6px;
+                font-size: 0.9em;
+            }
+            .project-card-title {
+                font-size: 1em;
+            }
+            .public-badge {
+                font-size: 0.8em;
+                padding: 2px 8px;
+            }
+            .project-desc {
+                font-size: 0.9em;
+            }
+            .project-tech {
+                font-size: 0.9em;
+                gap: 4px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 6px;
+                font-size: 0.9em;
+            }
+            .footer .left, .footer .right {
+                align-items: center;
+                text-align: center;
+            }
+            .footer .label {
+                font-size: 1em;
+                margin-bottom: 2px;
+            }
+            .footer .left a {
+                font-size: 1.1em;
+                margin-bottom: 18px; /* Adjust this value for more/less space */
+            }
+            .footer .icons {
+                gap: 8px;
+            }
+            /* Make all footer icons the same size */
+            .footer a img {
+                width: 22px !important;
+                height: 22px !important;
+            }
+            /* Force mail icon to match other icons in mobile view */
+            #mail-logo-footer {
+                width: 22px !important;
+                height: 22px !important;
+            }
+            /* Make GitHub and LinkedIn icons larger in mobile view */
+            #github-logo-footer, #linkedin-logo-footer {
+                width: 32px !important;
+                height: 32px !important;
+            }
+            /* Disable enlarge hover effect for footer email and icons in mobile view */
+            .footer a:hover,
+            .footer a img:hover {
+                transform: none !important;
+                filter: none !important;
+            }
+        }
+        .menu-bar .hamburger {
+            display: none;
+            font-size: 2.2em;
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            margin-left: 18px;
+            z-index: 1101;
+        }
+        .dropdown-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.92);
+            color: #fff;
+            z-index: 1100;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 0;
+        }
+        .dropdown-menu.open {
+            display: flex;
+        }
+        .dropdown-content {
+            background: #111;
+            color: #fff;
+            width: 100vw;
+            padding: 32px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 36px;
+        }
+        .dropdown-content a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin: 18px 32px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        .dropdown-content a img {
+            width: 32px;
+            height: 32px;
+        }
+        .dropdown-close {
+            font-size: 2.5em;
+            color: #fff;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 46px;
+            right: 24px;
+            cursor: pointer;
+            margin-bottom: 32px;
+        }
+        body.light-mode .dropdown-menu, body.light-mode .dropdown-content {
+            background: #fff;
+            color: #000;
+        }
+        body.light-mode .dropdown-content a {
+            color: #000;
+        }
+        body.light-mode .dropdown-close {
+            color: #000;
+        }
+        @media (max-width: 700px) {
+            .menu-bar .right {
+                display: none;
+            }
+            .menu-bar .hamburger {
+                display: block;
+            }
+            .project-grid {
+                display: none !important;
+            }
+            .project-card {
+                display: none !important;
+            }
+            .project-info h2 {
+                margin-left: .05px;
+            }
+            .menu-bar .left {
+                font-size: 2em;
+            }
+            .menu-bar .hamburger {
+                font-size: 2.5em;
+            }
+            .menu-bar .left {
+                padding-left: 25px;
+            }
+            /* Enlarge project title links on hover in mobile view */
+            .project-info h2 a:hover,
+            .mobile-project-list a:hover {
+                transform: scale(1.08);
+            }
+        }
+        /* Project title link color for dark/light mode */
+        .project-info h2 a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.18s, transform 0.18s;
+        }
+        .project-info h2 a:visited {
+            color: #fff;
+        }
+        body.light-mode .project-info h2 a,
+        body.light-mode .project-info h2 a:visited {
+            color: #000;
+        }
+        .project-info h2 a:hover {
+            color: #fff;
+        }
+        body.light-mode .project-info h2 a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <a href="index.html" class="left">Nick Jackoski</a>
+        <div class="right">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="mailto:jackoskinickolaus@gmail.com" target="_blank">
+                <img id="mail-logo" src="Images/Darkmail.png" alt="Mail" style="width:48px;height:48px;vertical-align:middle;">
+            </a>
+            <a href="https://github.com/Nick-Jacko" target="_blank">
+                <img id="github-logo" src="Images/Github.png" alt="GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/nickolaus-jackoski-535241280/" target="_blank">
+                <img id="linkedin-logo" src="Images/linkedIN.png" alt="LinkedIn">
+            </a>
+            <label class="toggle-switch" title="Toggle dark/light mode">
+                <input type="checkbox" id="toggleModeSlider" aria-label="Toggle dark/light mode">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <button class="dropdown-close" id="dropdownCloseBtn" aria-label="Close menu">&times;</button>
+        <div class="dropdown-content">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="mailto:jackoskinickolaus@gmail.com" target="_blank">
+                <img src="Images/Darkmail.png" alt="Mail" style="vertical-align:middle;">Mail
+            </a>
+            <a href="https://github.com/Nick-Jacko" target="_blank">
+                <img src="Images/Github.png" alt="GitHub">GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/nickolaus-jackoski-535241280/" target="_blank">
+                <img src="Images/linkedIN.png" alt="LinkedIn">LinkedIn
+            </a>
+        </div>
+    </div>
+
+    <!-- New Projects Section -->
+    <div class="projects">
+        <div class="side-projects-title">Projects In Detail</div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Naive-Bayes-Email-Classifier">Naive Bayes Email Classifier</a></h2>
+                <p>
+                    This project involved creating a Naive Bayes classifier which uses probabilistic reasoning to identify spam emails from non-spam ones. 
+                    The Naive Bayes model learned to detect common patterns of word frequency differences between spam and legitimate messages through training 
+                    on a labeled email dataset. The classifier developed strong generalization abilities for new data through tokenization and normalization and 
+                    stopword removal during preprocessing. The trained model achieved a test set accuracy above 97% while both precision and recall reached above 93% 
+                    leading to an F1-score near 0.95. Naive Bayes showed efficient real-world text classification capabilities through this project with minimal computational requirements.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Naive-Bayes-Email-Classifier"><div class="project-card">
+                <div class="project-card-title">Naive-Bayes-Email-Classifier</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    Developed a Naive Bayes classifier for email classification into two categories: spam and ham (non-spam). The project is focused on understanding and implementing the principles of probabilistic classification using Naive Bayes algorithms. 
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Java
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Neural_Net_From_Scratch" target="_blank">Neural Network From Scratch</a></h2>
+                <p>
+                    This project demonstrates the construction and training of a neural network from scratch using only Python and NumPy. 
+                    The neural network performs binary classification on a simple 2D dataset. Furthermore, the neural network class accommodates 
+                    any number of layers, any number of neurons per layer, custom forward and backward propagation, and gradient descent training. In addition, 
+                    The NeuralNet class uses ReLU activation for hidden layers and sigmoid activation for the output layer, trained by batch gradient descent and 
+                    cross-entropy loss. Finally, the result was as expected seeing that a 1-layer network performed poorly with train and test accuracy of about 52.5%,
+                    i.e., it could not learn the pattern. A 2-layer model achieved perfect train accuracy and around 96.5% test accuracy, while a 3-layer model slightly 
+                    overfit, achieving train accuracy of ~96.5% and test accuracy of ~95.5% off a bit.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Neural_Net_From_Scratch" target="_blank"><div class="project-card">
+                <div class="project-card-title">Neural_Net_From_Scratch</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    Implements a neural network class with custom forward/backward propagation, ReLU/Sigmoid activations, and batch gradient descent. Achieved up to 96.5% test accuracy on a synthetic dataset.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Python
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Financial-Fraud-Detection" target="_blank">Financial Fraud Detection</a></h2>
+                <p>
+                    The goal of this project was to predict whether a given transaction was fraudulent using machine learning models, and the results 
+                    clearly showed that advanced ensemble methods significantly outperformed the baseline. While logistic regression provided a decent 
+                    recall of 87.16%, it suffered from a very low precision of just 3.07%, resulting in an F1-score of only 0.059 due to the high number 
+                    of false positives. In contrast, the Random Forest model achieved an accuracy of 1.000, precision greater than 0.99, recall greater than 
+                    0.99, F1-score above 0.99, and an ROC AUC of 0.999, indicating nearly perfect classification ability. The confusion matrix showed only 10 
+                    misclassified cases in total, with 6 false positives and 4 false negatives.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Financial-Fraud-Detection" target="_blank"><div class="project-card">
+                <div class="project-card-title">Financial-Fraud-Detection</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    Machine learning models (Logistic Regression, Random Forest, XGBoost) were trained to detect fraud in a large financial dataset. Random Forest and XGBoost achieved >99% precision and recall.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Jupyter Notebook
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/A-Star-Algorithm-GPS-Navigation">A* Algorithm GPS Navigation</a></h2>
+                <p>
+                    The goal of this project was to develop a route-finding application using the A* algorithm to 
+                    compute the fastest driving routes in Memphis, processing real-world map data and road speed limits. 
+                    The program reads a map file (e.g. memphis-medium.txt), constructs a network of location nodes and road edges, 
+                    and allows users to input start and end location IDs. It then computes the optimal path based on actual road speeds, 
+                    augmented by a dynamic "speeding" feature—when users choose to speed on certain segments, the travel time on those edges is halved. 
+                    By combining concrete road metrics with the heuristic‑guided A* search, the application efficiently finds high-quality, near‑optimal 
+                    routes and demonstrates how flexible heuristic parameters and user-controlled speed factors can enhance traditional pathfinding algorithms.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/A-Star-Algorithm-GPS-Navigation"><div class="project-card">
+                <div class="project-card-title">A-Star-Algorithm-GPS-Navigation</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    This project involves developing a program that utilizes the A* algorithm and added heuristics to determine the fastest driving route between two locations in Memphis.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Java
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Nim-Game-with-Q-Learning">Q-Learning Nim Game</a></h2>
+                <p>
+                    The goal of this project was to create an AI that masteres the game of Nim utilizing Q-learning through self-play, 
+                    and the outcomes demonstrated that reinforcement learning achieved near-optimal performance. At first, the Q values were
+                     initialized to zero, the agent iteratively updated its state-action evaluations using the  Bellman equation trying to find the 
+                     appropriate values  (ε‑greedy strategy) with learning (α, γ parameters). After sufficient training episodes, the AI reliably chose 
+                     winning moves from various pile configurations. When playing against a human, the trained agent consistently executed optimal or near-optimal 
+                     strategies, showcasing its ability to learn effective game tactics purely through experience.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Nim-Game-with-Q-Learning"><div class="project-card">
+                <div class="project-card-title">Nim-Game-with-Q-Learning</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    Implemented the classic strategy game of Nim using Q-learning, a reinforcement learning technique. In Nim, two players alternately remove objects from one of three piles, and the goal is to avoid taking the last object. 
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Java
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Connect-4-Minimax-Alpha-Beta-Pruning-Project">Connect Four AI using Minimax and Alpha-Beta Pruning</a></h2>
+                <p>
+                    The goal of this project was to develop an AI agent able to play Connect Four by 
+                    implementing a game-playing agent that uses the minimax algorithm with alpha-beta pruning. 
+                    This implementation of minimax utilized a custom-made heuristic evaluation function to assess non-terminal game states, 
+                    thus allowing for much better functioning and decisions to be made from deeper searches. Compared to an agent that made 
+                    moves completely at random, the alpha-beta agent was always a far superior choice in terms of speed and intellect, 
+                    gaining clear and obvious strategic advantages that allowed it to quickly win or defend against the human player. The modular 
+                    nature of the project affords easy experimentation with alternate heuristics as well as transparency on search depth.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Connect-4-Minimax-Alpha-Beta-Pruning-Project"><div class="project-card">
+                <div class="project-card-title">Connect-4-Minimax-Alpha-Beta-Pruning-Project</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    This project involves the creation of an AI for playing Connect Four, with the implementation of advanced algorithms such as minimax with alpha-beta pruning, and a added heuristic.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Java
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/Logistic_Regression_Proj" target="_blank">Logistic Regression Project</a></h2>
+                <p>
+                    In this project there are two parts one utlizing binary logistic regression which
+                    Predicts whether a person ends up in the Good Place (1) or Bad Place (0) based on four moral-behavior features. First, let someone merge in front of them in traffic, second, didn’t tip their server at a restaurant, third, if they held a door open for someone behind them, and fourth if that person has littered. Part 2 utilizes multinomial Logistic Regression
+                    Expands the classification task to three outcomes: Bad Place (0), Medium Place (1), and Good Place (2), using the same features. Additionally, the project involved extensive data preprocessing using Pandas and NumPy, followed by the implementation of binary logistic regression through both Scikit-learn and a manual gradient descent algorithm. Additionally, 
+                    multinomial logistic regression was implemented using softmax activation, one-hot encoding, and manual calculations of the cost function and gradients. Model performance was evaluated using accuracy and cost metrics.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/Logistic_Regression_Proj" target="_blank"><div class="project-card">
+                <div class="project-card-title">Logistic_Regression_Proj</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    Implements logistic regression for binary classification, including data preprocessing, model fitting, and performance evaluation.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Jupyter Notebook
+                </div>
+            </div></a>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h2><a href="https://github.com/Nick-Jacko/LISP-Interpreter-in-Standard-ML" target="_blank">LISP Interpreter in Standard ML</a></h2>
+                <p>
+                    The goal of the project was to implement a full Lisp interpreter using the Standard ML a functional programming language. The interpreter interprets and executes S-expressions with atoms, lists, functions, and lambda expressions support. It supports lexical scoping, first-class functions, recursion, and higher-order functions, which enable advanced language features such as currying and nested lambdas. Basic Lisp primitives such as cons, car, cdr, if, and boolean logical operations are also supported. The interpreter can be accessed by the users through an easy-to-use REPL interface, through which they can input expressions that are parsed, evaluated, and printed in the environment of Standard ML.
+                </p>
+            </div>
+            <a class="project-card-link" href="https://github.com/Nick-Jacko/LISP-Interpreter-in-Standard-ML" target="_blank"><div class="project-card">
+                <div class="project-card-title">LISP Interpreter in Standard ML</div>
+                <span class="public-badge">Public</span>
+                <p>
+                    This project is a full LISP interpreter implemented in Standard ML (SML) as part of a lab assignment for COMP 360 (Programming Languages). It lexes, parses, and evaluates a subset of LISP expressions, supporting: arithmetic operations, vonditional logic, variable bindings, user-defined functions, and basic list manipulation.
+                </p>
+                <div style="margin-top: 16px;">
+                    <span style="color:#fbbf24; font-size:1.2em;">●</span> Standard ML
+                </div>
+            </div></a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="left">
+            <div class="label">Email</div>
+            <a href="mailto:jackoskinickolaus@gmail.com">jackoskinickolaus@gmail.com</a>
+        </div>
+        <div class="right">
+            <div class="label">Contact Me</div>
+            <div class="icons">
+                <a href="mailto:jackoskinickolaus@gmail.com" target="_blank">
+                    <img id="mail-logo-footer" src="Images/Darkmail.png" alt="Mail" style="width:48px;height:48px;vertical-align:middle;">
+                </a>
+                <a href="https://github.com/Nick-Jacko" target="_blank">
+                    <img id="github-logo-footer" src="Images/Github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/nickolaus-jackoski-535241280/" target="_blank">
+                    <img id="linkedin-logo-footer" src="Images/linkedIN.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Apply theme immediately on page load (before DOMContentLoaded)
+        (function() {
+            const isLight = localStorage.getItem('colorMode') === 'light';
+            if (isLight) {
+                document.body.classList.add('light-mode');
+                document.documentElement.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+                document.documentElement.classList.remove('light-mode');
+            }
+            // Add this line:
+            if (typeof updateLogosForMode === 'function') {
+                updateLogosForMode(isLight);
+            }
+        })();
+
+        // 2. Theme toggle logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('toggleModeSlider');
+            // Set toggle to match current mode
+            const isLight = localStorage.getItem('colorMode') === 'light';
+            if (slider) slider.checked = isLight;
+
+            function setMode(isLight) {
+                if (isLight) {
+                    document.body.classList.add('light-mode');
+                    document.documentElement.classList.add('light-mode');
+                    localStorage.setItem('colorMode', 'light');
+                } else {
+                    document.body.classList.remove('light-mode');
+                    document.documentElement.classList.remove('light-mode');
+                    localStorage.setItem('colorMode', 'dark');
+                }
+                // Optionally update logos here if you have a function for that
+                if (typeof updateLogosForMode === 'function') {
+                    updateLogosForMode(isLight);
+                }
+            }
+
+            // Listen for toggle changes
+            if (slider) {
+                slider.addEventListener('change', function() {
+                    setMode(slider.checked);
+                });
+            }
+
+            // 3. Listen for storage changes from other tabs/pages
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'colorMode') {
+                    const isLight = e.newValue === 'light';
+                    setMode(isLight);
+                    if (slider) slider.checked = isLight;
+                }
+            });
+        });
+
+        // Hamburger menu logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const dropdownCloseBtn = document.getElementById('dropdownCloseBtn');
+
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', () => {
+                    if (dropdownMenu) dropdownMenu.classList.add('open');
+                });
+            }
+            if (dropdownCloseBtn) {
+                dropdownCloseBtn.addEventListener('click', () => {
+                    if (dropdownMenu) dropdownMenu.classList.remove('open');
+                });
+            }
+            // Close dropdown on link click (optional)
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (dropdownMenu) dropdownMenu.classList.remove('open');
+                });
+            });
+        });
+
+        function updateLogosForMode(isLight) {
+            const githubLogo = document.getElementById('github-logo');
+            const linkedinLogo = document.getElementById('linkedin-logo');
+            const mailLogo = document.getElementById('mail-logo');
+            const githubLogoFooter = document.getElementById('github-logo-footer');
+            const linkedinLogoFooter = document.getElementById('linkedin-logo-footer');
+            const mailLogoFooter = document.getElementById('mail-logo-footer');
+
+            if (isLight) {
+                if (githubLogo) githubLogo.src = 'Images/github_light.png';
+                if (linkedinLogo) linkedinLogo.src = 'Images/linkedin_light.jpg';
+                if (mailLogo) mailLogo.src = 'Images/LightMail.png';
+                if (githubLogoFooter) githubLogoFooter.src = 'Images/github_light.png';
+                if (linkedinLogoFooter) linkedinLogoFooter.src = 'Images/linkedin_light.jpg';
+                if (mailLogoFooter) mailLogoFooter.src = 'Images/LightMail.png';
+            } else {
+                if (githubLogo) githubLogo.src = 'Images/Github.png';
+                if (linkedinLogo) linkedinLogo.src = 'Images/linkedIN.png';
+                if (mailLogo) mailLogo.src = 'Images/Darkmail.png';
+                if (githubLogoFooter) githubLogoFooter.src = 'Images/Github.png';
+                if (linkedinLogoFooter) linkedinLogoFooter.src = 'Images/linkedIN.png';
+                if (mailLogoFooter) mailLogoFooter.src = 'Images/Darkmail.png';
+            }
+        }
+    </script>
+</body>
+</html>
